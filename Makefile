@@ -4,12 +4,12 @@ NC     := $(shell tput -Txterm sgr0)
 help: ## Print this help message
 	@awk -F ':|##' '/^[^\t].+?:.*?##/ { printf "${GREEN}%-20s${NC}%s\n", $$1, $$NF }' $(MAKEFILE_LIST)
 
-BUILD_DIR=build
+BUILD_DIR=public
 BUCKET_NAME=www.grocky.com
 
-.PHONY=publish
-publish: build ## Publish the application to S3
-	aws s3 sync --cache-control 'max-age=604800' --exclude index.html build/ s3://$(BUCKET_NAME)
+.PHONY:publish
+publish: ## Publish the application to S3
+	aws s3 sync --cache-control 'max-age=604800' --exclude index.html $(BUILD_DIR)/ s3://$(BUCKET_NAME)
 	aws s3 sync --cache-control 'no-cache' $(BUILD_DIR)/ s3://$(BUCKET_NAME)
 
 init: ## intitalize the repo
