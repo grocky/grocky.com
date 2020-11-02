@@ -1,3 +1,10 @@
+# Infrastructure
+
+The infrastructure for [www.grocky.com](https://www.grocky.com)
+
+## Infrastructure Graph
+
+![terraform graph](./graph.svg)
 
 ## Requirements
 
