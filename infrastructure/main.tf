@@ -29,18 +29,3 @@ variable "www_domain_name" {
   default = "www.grocky.com"
 }
 
-output "site_url" {
-  value = aws_route53_record.www.fqdn
-}
-
-output "s3_website_url" {
-  value = aws_s3_bucket.www.website_endpoint
-}
-
-output "cloudfront_url" {
-  value = aws_cloudfront_distribution.www_distribution.domain_name
-}
-
-output "cloudfront_www_id" {
-  value = aws_cloudfront_distribution.www_distribution.id
-}
